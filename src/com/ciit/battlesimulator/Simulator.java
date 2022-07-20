@@ -6,6 +6,7 @@ public class Simulator {
     Monster monster = new Monster();
     Player player = new Player();
     Random rand = new Random();
+    int monsterChoice;
 
     public Simulator(){
         battleLoop(monster, player, rand);
@@ -13,7 +14,7 @@ public class Simulator {
 
     public void battleLoop(Monster monster, Player player, Random rand){
         do {
-            player.doAction(monster, rand, gui.playerAction());
+            player.doAction(monster, rand, gui.doAction());
             if (player.getIsActionDone()) monster.doAction(player, rand);
 
         }

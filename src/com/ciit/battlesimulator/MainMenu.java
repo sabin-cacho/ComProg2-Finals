@@ -2,13 +2,14 @@ package com.ciit.battlesimulator;
 
 public class MainMenu {
     Simulator game = new Simulator();
+    GUI gui = new GUI();
 
     public void displayMenu() {
-        System.out.println("Running the simulator...");
-        runSimulator();
+        System.out.println();
     }
 
     public void runSimulator() {
+        System.out.println();
         Simulator sim = new Simulator();
     }
 

@@ -1,4 +1,4 @@
-package com.ciit.battlesimulator;s
+package com.ciit.battlesimulator;
 import java.util.Random;
 
 public class Monster implements IEntity {
@@ -17,9 +17,7 @@ public class Monster implements IEntity {
     private boolean isActionDone;
 
     public void doAction(Player player, Random rand){
-        //where the monsters "AI" will go
-        //basically a bunch of if statements that define what the monster will do
-        //whether it be attack or heavy attack or whatever
+
     }
 
     public void attackPlayer(Player player){

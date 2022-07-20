@@ -14,6 +14,10 @@ public class LesserDemon extends Monster{
         this.setblightDamage(0); //always starts off as 0, gets changed by a method
         this.setblightDuration(0); //same here
         this.setMastery(3);
-        this.setIsActionDone((false)); //always starts off as false
+        this.setIsActionDone(false); //always starts off as false
+    }
+
+    public void attackPLayer(Player player, int duration){
+
     }
 }
