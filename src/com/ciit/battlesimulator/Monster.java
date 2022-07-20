@@ -1,7 +1,20 @@
 package com.ciit.battlesimulator;
 import java.util.Random;
 
-public class Monster {
+public class Monster implements IEntity {
+    private String Name;
+    private int HP;
+    private int maxHP;
+    private int Def;
+    private int Atk;
+    private int MRes;
+    private int BRes;
+    private int Speed;
+    private int criticalDamage;
+    private int blightDamage;
+    private int blightDuration;
+    private int Mastery;
+
     public void doAction(Player player, Random rand){
         //where the monsters "AI" will go
         //basically a bunch of if statements that define what the monster will do
@@ -27,5 +40,65 @@ public class Monster {
 
     private void setMonster(int option){
         // should have a switch case that spawns a new monster by instantiating its class
+    }
+
+    @Override
+    public String getName() {
+        return Name;
+    }
+
+    @Override
+    public int getHP() {
+        return HP;
+    }
+
+    @Override
+    public int getmaxHP() {
+        return maxHP;
+    }
+
+    @Override
+    public int getDef() {
+        return Def;
+    }
+
+    @Override
+    public int getAtk() {
+        return Atk;
+    }
+
+    @Override
+    public int getMRes() {
+        return MRes;
+    }
+
+    @Override
+    public int getBRes() {
+        return BRes;
+    }
+
+    @Override
+    public int getSpeed() {
+        return Speed;
+    }
+
+    @Override
+    public int getcriticalDamage() {
+        return criticalDamage;
+    }
+
+    @Override
+    public int getblightDamage() {
+        return blightDamage;
+    }
+
+    @Override
+    public int getblightDuration() {
+        return blightDuration;
+    }
+
+    @Override
+    public int getMastery() {
+        return Mastery;
     }
 }
