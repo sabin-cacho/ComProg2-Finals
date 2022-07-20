@@ -12,14 +12,16 @@ public class Simulator {
         battleLoop(monster, player, rand);
     }
 
-    public void battleLoop(Monster monster, Player player, Random rand){
+    public void battleLoop(Monster monster, Player player){
+        System.out.println("Battle Phase: ");
+        gui.spawnMonster();
         do {
-            player.doAction(monster, rand, gui.doAction());
-            if (player.getIsActionDone()) monster.doAction(player, rand);
-            System.out.println(" ");
-
+            player.doAction(monster, rand, gui.doAction() + 1);
+            if (player.getIsActionDone()) monster.doAction(player);
+            System.out.println("Press Enter key to continue...");
+            try { System.in.read();
+            } catch(Exception e) {}
         }
         while(monster.getHP() > 0 && player.getHP() > 0);
     }
 }
-//wait iniisip ko pa kung pano gagana yung simulator class

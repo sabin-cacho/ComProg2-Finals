@@ -1,5 +1,6 @@
 package com.ciit.battlesimulator;
 import java.util.Random;
+import static java.lang.String.*;
 
 public class Monster implements IEntity {
     private String name;
@@ -15,20 +16,39 @@ public class Monster implements IEntity {
     private int blightDuration;
     private int Mastery;
     private boolean isActionDone;
+    private Random rand = new Random();
 
-    public void doAction(Player player, Random rand){
+    public void doAction(Player player){
 
     }
 
-    public void attackPlayer(Player player){
-        //basic attack
+    public void attackPlayer(Monster monster){
+        int dodgeChance = calculateDodgeChance(monster);
+        int totalDamage = this.Atk + this.criticalDamage;
+        int grossDmg = totalDamage - monster.Def;
+
+        if (rand.nextInt(100) > dodgeChance) {
+            if (totalDamage > monster.Def) {
+                monster.HP -= totalDamage - monster.Def;
+                if (this.criticalDamage > 0) {
+                    System.out.printf("> You were faster than the monster and dealt %s additional damage!", valueOf(this.criticalDamage));
+                }
+                System.out.println("> You successfully hit the %s! You dealt %s damage. The %s's HP is now %s", monster.name, valueOf(grossDmg), monster.name, monster.HP);
+            }
+            else {
+                WriteLine("> The monster's defense is too high! You must reduce it\'s defense or use a spell that ignores the monster's defense.");
+            }
+        }
+        else {
+            WriteLine("> Oh no, the monster was too swift and dodged your attack!");
+        }
     }
 
     public void attackPlayerHeavy(Player player, Random rand){
         //heavy attack, deals additional damage that scales to the monster's current HP and Mastery
     }
 
-    private int calculateSpeedDifference(Player player){
+    private int calculateDodgeChance(Monster monster){
         //calculation for which party is faster, and returns the relevant crit damage and speed difference values
         return 0; //the 0 is a placeholder para di magalit si IDE
     }
