@@ -17,7 +17,7 @@ public interface IEntity {
 
     public void setName(String name);
     public void setHP(int HP);
-    public void setmaxHP(int maxHP);
+    public void setMaxHP(int maxHP);
     public void setDef(int Def);
     public void setAtk(int Atk);
     public void setMRes(int MRes);

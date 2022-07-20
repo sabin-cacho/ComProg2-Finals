@@ -104,7 +104,7 @@ public class Monster implements IEntity {
         this.HP = HP;
     }
     @Override
-    public void setmaxHP(int maxHP) {
+    public void setMaxHP(int maxHP) {
         this.maxHP = maxHP;
     }
     @Override
