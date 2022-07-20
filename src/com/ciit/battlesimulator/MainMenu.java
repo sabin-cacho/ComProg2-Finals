@@ -9,7 +9,7 @@ public class MainMenu {
     }
 
     public void runSimulator() {
-        //runs the simulator
+        Simulator sim = new Simulator();
     }
 
     public void showAbout() {
