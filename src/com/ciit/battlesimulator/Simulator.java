@@ -16,8 +16,10 @@ public class Simulator {
         do {
             player.doAction(monster, rand, gui.doAction());
             if (player.getIsActionDone()) monster.doAction(player, rand);
+            System.out.println(" ");
 
         }
         while(monster.getHP() > 0 && player.getHP() > 0);
     }
 }
+//wait iniisip ko pa kung pano gagana yung simulator class
