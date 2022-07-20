@@ -13,4 +13,19 @@ public interface IEntity {
     public int getblightDamage();
     public int getblightDuration();
     public int getMastery();
+    public boolean getIsActionDone();
+
+    public void setName();
+    public void setHP();
+    public void setmaxHP();
+    public void setDef();
+    public void setAtk();
+    public void setMRes();
+    public void setBRes();
+    public void setSpeed();
+    public void setcriticalDamage();
+    public void setblightDamage();
+    public void setblightDuration();
+    public void setMastery();
+    public void setIsActionDone();
 }

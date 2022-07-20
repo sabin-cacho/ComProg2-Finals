@@ -2,7 +2,7 @@ package com.ciit.battlesimulator;
 import java.util.Random;
 
 public class Monster implements IEntity {
-    private String Name;
+    private String name;
     private int HP;
     private int maxHP;
     private int Def;
@@ -14,6 +14,7 @@ public class Monster implements IEntity {
     private int blightDamage;
     private int blightDuration;
     private int Mastery;
+    private boolean isActionDone;
 
     public void doAction(Player player, Random rand){
         //where the monsters "AI" will go
@@ -101,4 +102,76 @@ public class Monster implements IEntity {
     public int getMastery() {
         return Mastery;
     }
+
+    @Override
+    public boolean getIsActionDone() {
+        return isActionDone;
+    }
+
+    @Override
+    public void setName() {
+
+    }
+
+    @Override
+    public void setHP() {
+
+    }
+
+    @Override
+    public void setmaxHP() {
+
+    }
+
+    @Override
+    public void setDef() {
+
+    }
+
+    @Override
+    public void setAtk() {
+
+    }
+
+    @Override
+    public void setMRes() {
+
+    }
+
+    @Override
+    public void setBRes() {
+
+    }
+
+    @Override
+    public void setSpeed() {
+
+    }
+
+    @Override
+    public void setcriticalDamage() {
+
+    }
+
+    @Override
+    public void setblightDamage() {
+
+    }
+
+    @Override
+    public void setblightDuration() {
+
+    }
+
+    @Override
+    public void setMastery() {
+
+    }
+
+    @Override
+    public void setIsActionDone() {
+
+    }
+
+
 }
