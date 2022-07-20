@@ -1,4 +1,4 @@
-package com.ciit.battlesimulator;
+package com.ciit.battlesimulator;s
 import java.util.Random;
 
 public class Monster {
