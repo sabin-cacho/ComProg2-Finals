@@ -28,3 +28,6 @@ public class GUI {
         return choice;
     }
 }
+//[MATIAS]Logs Finished Akira Demon Monster (SuccubusDemon.Java)
+//[MATIAS]Logs Adding 2 More Monsters to GUI Method.
+//[MATIAS]Logs Added Emperor Demon and Hyperion Demon To Monster GUI.
