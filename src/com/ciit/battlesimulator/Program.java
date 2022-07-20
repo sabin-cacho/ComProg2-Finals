@@ -11,9 +11,8 @@ public class Program {
             menu.displayMenu();
 
             System.out.print("Would you like to play again? (Y/N): ");
-            System.out.print(" "); //fixes the scanner
+
             ch = replay.nextLine().toCharArray();
-            replay.close();
         } while(Character.toLowerCase(ch[0]) == 'y');
 
         replay.close();
