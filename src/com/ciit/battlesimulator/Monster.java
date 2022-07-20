@@ -45,7 +45,7 @@ public class Monster implements IEntity {
 
     @Override
     public String getName() {
-        return Name;
+        return name;
     }
     @Override
     public int getHP() {
