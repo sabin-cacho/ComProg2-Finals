@@ -9,7 +9,9 @@ public class Simulator {
     int monsterChoice;
 
     public Simulator(){
-        battleLoop(monster, player, rand);
+
+
+        battleLoop(monster, player);
     }
 
     public void battleLoop(Monster monster, Player player){
@@ -23,5 +25,7 @@ public class Simulator {
             } catch(Exception e) {}
         }
         while(monster.getHP() > 0 && player.getHP() > 0);
+
+
     }
 }
