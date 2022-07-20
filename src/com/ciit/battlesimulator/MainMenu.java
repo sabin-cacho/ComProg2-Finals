@@ -4,8 +4,8 @@ public class MainMenu {
     Simulator game = new Simulator();
 
     public void displayMenu() {
-        //displays the main menu
-        //users can choose to either run the sim, show the about page, or exit the program
+        System.out.println("Running the simulator...");
+        runSimulator();
     }
 
     public void runSimulator() {

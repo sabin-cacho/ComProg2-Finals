@@ -8,6 +8,7 @@ public class Program {
 
         do {
             MainMenu menu = new MainMenu();
+
             System.out.print("Would you like to play again? (Y/N): ");
             ch = replay.nextLine().toCharArray();
             replay.close();
