@@ -27,7 +27,7 @@ public class EmperorDemon extends Monster {
         }
     }
 
-    public void DarknessSmother(Player player){
+    public void specialAttack(Player player){
         Random rand = new Random();
         int chance = rand.nextInt(10);
 
@@ -50,6 +50,5 @@ public class EmperorDemon extends Monster {
         this.sethasDoneSpecialAttack(true);
         this.setIsActionDone(true);
     }
-
 }
-
+//[MATIAS] Logs Created the Emperor Demon.

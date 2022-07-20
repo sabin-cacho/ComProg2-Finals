@@ -28,7 +28,7 @@ public class SuccubusDemon extends Monster {
         }
     }
 
-    public void hyperAttack(Player player){
+    public void specialAttack(Player player){
         Random rand = new Random();
         int chance = rand.nextInt(10);
 
