@@ -137,7 +137,7 @@ public class Monster implements IEntity {
     }
     @Override
     public void setblightDuration(int BlightDuration) {
-        this.blightDuration = BlightDuration
+        this.blightDuration = BlightDuration;
     }
     @Override
     public void setMastery(int Mastery) {
