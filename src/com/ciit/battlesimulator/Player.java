@@ -1,8 +1,10 @@
 package com.ciit.battlesimulator;
 import java.util.Random;
 
-public class Player {
+public class Player implements IEntity{
+    public Player(){
 
+    }
 
     public void doAction(Monster monster, Random rand, int action){
         //method for calling the players action methods
