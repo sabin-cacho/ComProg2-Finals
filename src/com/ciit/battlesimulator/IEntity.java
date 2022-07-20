@@ -15,17 +15,17 @@ public interface IEntity {
     public int getMastery();
     public boolean getIsActionDone();
 
-    public void setName();
-    public void setHP();
-    public void setmaxHP();
-    public void setDef();
-    public void setAtk();
-    public void setMRes();
-    public void setBRes();
-    public void setSpeed();
-    public void setcriticalDamage();
-    public void setblightDamage();
-    public void setblightDuration();
-    public void setMastery();
-    public void setIsActionDone();
+    public void setName(String name);
+    public void setHP(int HP);
+    public void setmaxHP(int maxHP);
+    public void setDef(int Def);
+    public void setAtk(int Atk);
+    public void setMRes(int MRes);
+    public void setBRes(int BRes);
+    public void setSpeed(int Speed);
+    public void setcriticalDamage(int CriticalDamage);
+    public void setblightDamage(int BlightDamage);
+    public void setblightDuration(int BlightDuration);
+    public void setMastery(int Mastery);
+    public void setIsActionDone(boolean isActionDone);
 }
