@@ -3,34 +3,36 @@ package com.ciit.battlesimulator;
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
+import static java.lang.String.valueOf;
+
 public class GUI {
     public int spawnMonster(){
         int choice = 0;
         Scanner in = new Scanner(System.in);
-
-        System.out.println("Choose a monster to spawn: ");
-        System.out.println("1 - Lesser Demon");
-        System.out.println("2 - Akira Demon");
-        System.out.println("3 - Emperor Demon");
-        System.out.println("4 - Hyperion Demon");
+        System.out.println("Choose a monster to spawn:");
+        String[] monsters = {"Lesser Demon", "Akira Demon", "Emperor Demon", "Hyperion Demon"};
+        for (int i = 0; i < monsters.length; i++){
+            System.out.printf("%s - %s\n", valueOf(i+1), monsters[i]);
+        }
+        System.out.print("Enter your choice here: ");
         choice = in.nextInt();
         return choice;
     }
 
     public int selectClass(){
-
+        return 0;
     }
 
-    public int doAction(){
+    public int playerAction(){
         int choice = 0;
         Scanner in = new Scanner(System.in);
 
         System.out.println("What action would you like to take?");
-        System.out.println("1 - Attack");
-        System.out.println("2 - Use a spell");
-        System.out.println("3 - Check your stats");
-        System.out.println("4 - Check the monster's stats");
-        System.out.println("Enter your choice here: ");
+        String[] options = {"Attack the monster", "Use a spell", "Check your stats", "Check the monster's stats"};
+        for (int i = 0; i < options.length; i++){
+            System.out.printf("%s - %s\n", valueOf(i+1), options[i]);
+        }
+        System.out.print("Enter your choice here: ");
         choice = in.nextInt();
         return choice;
     }

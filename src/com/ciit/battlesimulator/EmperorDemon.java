@@ -18,6 +18,15 @@ public class EmperorDemon extends Monster {
         this.setIsActionDone(false);
     }
 
+    public void doAction(Player player){
+        if (!this.getIsActionDone() && this.getHP() > this.getmaxHP() / 2) {
+            specialAttack(player);
+        }
+        else{
+            super.doAction(player);
+        }
+    }
+
     public void DarknessSmother(Player player){
         Random rand = new Random();
         int chance = rand.nextInt(10);
@@ -37,6 +46,9 @@ public class EmperorDemon extends Monster {
         else{
             System.out.println("Emperor Demon's Darkness Smother Attack Failed");
         }
+
+        this.sethasDoneSpecialAttack(true);
+        this.setIsActionDone(true);
     }
 
 }

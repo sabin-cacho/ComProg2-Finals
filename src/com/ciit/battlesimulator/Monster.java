@@ -1,6 +1,7 @@
 package com.ciit.battlesimulator;
 import java.util.Random;
 import static java.lang.String.*;
+import java.lang.Math;
 
 public class Monster implements IEntity {
     private String name;
@@ -17,48 +18,115 @@ public class Monster implements IEntity {
     private int Mastery;
     private boolean isActionDone;
     private Random rand = new Random();
+    private boolean hasDoneSpecialAttack;
+
+
 
     public void doAction(Player player){
+        boolean isActionDone = false;
+        boolean isBracing = false;
 
-    }
+        boolean isLowHP = this.HP > this.maxHP / 2 ? false : true;
+        int defBuff = 0;
 
-    public void attackPlayer(Monster monster){
-        int dodgeChance = calculateDodgeChance(monster);
-        int totalDamage = this.Atk + this.criticalDamage;
-        int grossDmg = totalDamage - monster.Def;
-
-        if (rand.nextInt(100) > dodgeChance) {
-            if (totalDamage > monster.Def) {
-                monster.HP -= totalDamage - monster.Def;
-                if (this.criticalDamage > 0) {
-                    System.out.printf("> You were faster than the monster and dealt %s additional damage!", valueOf(this.criticalDamage));
-                }
-                System.out.println("> You successfully hit the %s! You dealt %s damage. The %s's HP is now %s", monster.name, valueOf(grossDmg), monster.name, monster.HP);
-            }
-            else {
-                WriteLine("> The monster's defense is too high! You must reduce it\'s defense or use a spell that ignores the monster's defense.");
-            }
+        if (player.getDef() >= this.Atk && !isLowHP) {
+            useMonsterEffect(player, 1);
+            isActionDone = true;
+        }
+        else if (!isActionDone && !isLowHP) {
+            attackPlayer(player);
+            isActionDone = true;
         }
         else {
-            WriteLine("> Oh no, the monster was too swift and dodged your attack!");
+            if (!isBracing) {
+                defBuff = this.Def * (this.Mastery / 100);
+                this.Def += defBuff;
+
+                System.out.printf("The %s is bracing for your next attack! It's DEF has increased by %s", this.name, valueOf(defBuff));
+                isBracing = true;
+            }
+            else {
+                this.Def -= defBuff;
+
+                System.out.printf("The %s is no longer bracing. It's DEF is back to %s.", this.name, valueOf(defBuff));
+            }
         }
     }
 
-    public void attackPlayerHeavy(Player player, Random rand){
+    public void attackPlayer(Player player){
+        int dodgeChance = this.calculateDodgeChance(player);
+        int totalDmg = this.Atk + this.criticalDamage;
+        int grossDmg = totalDmg - player.getDef();
+
+        if (rand.nextInt(1, 101) > dodgeChance) {
+            if (totalDmg > player.getDef()) {
+                player.setHP(totalDmg - player.getDef());
+                System.out.printf("> The {0} attacked you, dealing {1} damage. Your HP is now {2}\n", this.getName(), totalDmg - player.getDef(), player.getHP());
+            }
+            else {
+                System.out.printf("> The {0} tried to attack you!\n", this.getName());
+                System.out.println("> Your defense was high enough to block the monster's attack!\n");
+            }
+        }
+    }
+
+    public void specialAttack(Player player, int omegalul){
         //heavy attack, deals additional damage that scales to the monster's current HP and Mastery
     }
 
-    private int calculateDodgeChance(Monster monster){
-        //calculation for which party is faster, and returns the relevant crit damage and speed difference values
-        return 0; //the 0 is a placeholder para di magalit si IDE
+    private int calculateDodgeChance(Player player){
+        int speedDifference = player.getSpeed() - this.Speed;
+        this.criticalDamage = this.Atk + (this.Atk * (Math.abs(speedDifference) / 100));
+
+        if (speedDifference >= 15) {
+            this.criticalDamage = 0;
+            return 99;
+        }
+        else if (speedDifference >= 10 && speedDifference < 15) {
+            this.criticalDamage = 0;
+            return 75;
+        }
+        else if (speedDifference >= 5 && speedDifference < 10) {
+            this.criticalDamage = 0;
+            return 50;
+        }
+        else if (speedDifference > 0 && speedDifference < 5) {
+            this.criticalDamage = 0;
+            return 25;
+        }
+        else if (speedDifference == 0) {
+            return 0;
+        }
+        else if (speedDifference < 0 && speedDifference > -5) {
+            return -25;
+        }
+        else if (speedDifference <= -5 && speedDifference > -10) {
+            return -50;
+        }
+        else if (speedDifference <= -10 && speedDifference > -15) {
+            return -75;
+        }
+        else {
+            return -99;
+        }
+    }
+
+    private void useMonsterEffect(Player player, int action) { // basically the monster's version of spells, didnt have enough time to add more
+        switch (action){
+            case 1:
+                int defShred = this.Mastery / player.getDef();
+                player.setDef(defShred);
+                System.out.printf("> The {0} attacked your armor, reducing your DEF by {1}. Your DEF is now {2}", this.name, valueOf(defShred), player.getDef());
+                break;
+        }
     }
 
     public void inflictBlightDamage(Player player){
         // checks if theres a blight currently inflicted on the player, and inflicts additional damage if there is
-    }
-
-    private void setMonster(int option){
-        // should have a switch case that spawns a new monster by instantiating its class
+        if (player.getblightDuration() > 0) {
+            player.setHP(player.getHP() - player.getblightDamage());
+            player.setblightDuration(player.getblightDuration() - 1);
+        }
     }
 
     @Override
@@ -113,6 +181,10 @@ public class Monster implements IEntity {
     public boolean getIsActionDone() {
         return isActionDone;
     }
+    public boolean gethasDoneSpecialAttack() {
+        return hasDoneSpecialAttack;
+    }
+
     @Override
     public void setName(String name) {
         this.name = name;
@@ -164,6 +236,9 @@ public class Monster implements IEntity {
     @Override
     public void setIsActionDone(boolean isActionDone) {
         this.isActionDone = isActionDone;
+    }
+    public void sethasDoneSpecialAttack(boolean hasDoneSpecialAttack) {
+        this.hasDoneSpecialAttack = hasDoneSpecialAttack;
     }
 }
 //Logs Purple Derp Is here

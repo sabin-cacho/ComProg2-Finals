@@ -1,7 +1,10 @@
 package com.ciit.battlesimulator;
 import java.util.Random;
 
+import static java.lang.String.valueOf;
+
 public class Player implements IEntity{
+    private Random rand;
     private String name;
     private int HP;
     private int maxHP;
@@ -17,11 +20,32 @@ public class Player implements IEntity{
     private boolean isActionDone;
 
     public void doAction(Monster monster, Random rand, int action){
-        //method for calling the players action methods
+        switch(action){
+            case 1: attackMonster(monster);
+            break;
+        }
     }
 
     public void attackMonster(Monster monster){
-        //basic attack
+        int dodgeChance = calculateDodgeChance(monster);
+        int totalDamage = this.Atk + this.criticalDamage;
+        int grossDmg = totalDamage - monster.getDef();
+
+        if (rand.nextInt(100) > dodgeChance) {
+            if (totalDamage > monster.getDef()) {
+                monster.setHP(totalDamage - monster.getDef());
+                if (this.criticalDamage > 0) {
+                    System.out.printf("> You were faster than the monster and dealt %s additional damage!", valueOf(this.criticalDamage));
+                }
+                System.out.printf("> You successfully hit the %s! You dealt %s damage. The %s's HP is now %s", monster.getName(), valueOf(grossDmg), monster.getName(), valueOf(monster.getHP()));
+            }
+            else {
+                System.out.print("> The monster's defense is too high! You must reduce it\'s defense or use a spell that ignores the monster's defense.");
+            }
+        }
+        else {
+            System.out.println("> Oh no, the monster was too swift and dodged your attack!");
+        }
     }
     public void useSpell(Monster monster, Random rand){
         //method for using spells
@@ -30,7 +54,7 @@ public class Player implements IEntity{
         // checks if theres a blight currently inflicted on the player, and inflicts additional damage if there is
     }
 
-    private int calculateSpeedDifference(Monster monster){
+    private int calculateDodgeChance(Monster monster){
         //calculation for which party is faster, and returns the relevant crit damage and speed difference values
         return 0; //the 0 is a placeholder para di magalit si IDE
     }

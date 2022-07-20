@@ -19,13 +19,21 @@ public class SuccubusDemon extends Monster {
         this.setIsActionDone(false);
     }
 
+    public void doAction(Player player){
+        if (!this.getIsActionDone() && this.getHP() > this.getmaxHP() / 2) {
+            specialAttack(player);
+        }
+        else{
+            super.doAction(player);
+        }
+    }
+
     public void hyperAttack(Player player){
         Random rand = new Random();
         int chance = rand.nextInt(10);
 
         if (chance % 2 == 0){
             System.out.println("Akira Demon Has Possessed The Hyper Attack");
-            Thread.sleep(3000);
             int amount = player.getHP();
             player.setHP(amount / 2);
 
@@ -33,6 +41,9 @@ public class SuccubusDemon extends Monster {
         else{
             System.out.println("Akira Demon's Hyper Attack Failed");
         }
+
+        this.sethasDoneSpecialAttack(true);
+        this.setIsActionDone(true);
     }
 }
 //[MATIAS] Logs Created The Akira Demon.

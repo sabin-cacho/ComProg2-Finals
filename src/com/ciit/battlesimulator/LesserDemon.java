@@ -16,8 +16,4 @@ public class LesserDemon extends Monster{
         this.setMastery(3);
         this.setIsActionDone(false); //always starts off as false
     }
-
-    public void attackPLayer(Player player, int duration){
-
-    }
 }
