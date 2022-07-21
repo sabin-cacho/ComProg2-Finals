@@ -26,8 +26,8 @@ public class Player implements IEntity{
         this.setDef(5);
         this.setMaxHP(20);
         this.setAtk(5);
-        this.setMRes(10);
-        this.setBRes(10);
+        this.setMRes(50);
+        this.setBRes(50);
         this.setSpeed(12);
         this.setcriticalDamage(0);
         this.setblightDamage(0);

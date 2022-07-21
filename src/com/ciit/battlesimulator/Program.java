@@ -5,9 +5,9 @@ public class Program {
     public static void main(String[] args) {
         char[] ch = null;
         Scanner replay = new Scanner(System.in);
-
+        MainMenu menu = new MainMenu();
         do {
-            MainMenu menu = new MainMenu();
+
             menu.displayMenu();
 
             System.out.print("Would you like to play again? (Y/N): ");
@@ -15,6 +15,7 @@ public class Program {
             ch = replay.nextLine().toCharArray();
         } while(Character.toLowerCase(ch[0]) == 'y');
 
+        menu.exit();
         replay.close();
     }
 

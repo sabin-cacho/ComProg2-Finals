@@ -59,7 +59,7 @@ public class MainMenu {
     }
 
     public void exit() {
-        System.out.println("Goodbye prompt...");
+        System.out.println("Goodbye!");
         System.exit(0);
     }
 }

@@ -16,6 +16,7 @@ public class Simulator {
     Random rand = new Random();
 
     public Simulator(){
+        player = selectClass();
         battleLoop(spawnMonster(), player);
     }
 
@@ -44,6 +45,24 @@ public class Simulator {
             System.out.printf("%s%sYou died.%s\n", GUI.ANSI_RED_BG, GUI.ANSI_BLACK, GUI.ANSI_RESET);
             System.out.printf("%s%sTry again!%s\n", GUI.ANSI_RED_BG, GUI.ANSI_BLACK, GUI.ANSI_RESET);
         }
+    }
+
+    private Player selectClass(){
+        int option = gui.selectClass();
+        switch(option) {
+            case 1:
+                return new Warrior();
+            case 2:
+                return new Mage();
+            case 3:
+                return new Assassin();
+            case 4:
+                return new Druid();
+            default:
+                System.out.println("Please enter a valid option.");
+                selectClass();
+        }
+        return null;
     }
 
     private Monster spawnMonster(){
