@@ -23,6 +23,7 @@ public class Player implements IEntity{
     public Player() {
         this.setName("Player 1");
         this.setHP(20);
+        this.setDef(5);
         this.setMaxHP(20);
         this.setAtk(5);
         this.setMRes(10);
