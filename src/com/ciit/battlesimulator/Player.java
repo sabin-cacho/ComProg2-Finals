@@ -90,16 +90,16 @@ public class Player implements IEntity{
             if (totalDmg > monster.getDef()) {
                 monster.setHP(monster.getHP() - grossDmg);
                 if (this.criticalDamage > 0) {
-                    System.out.printf("> You were faster than the monster and dealt %s additional damage!\n", valueOf(this.criticalDamage));
+                    System.out.printf("> %sYou were faster than the monster and dealt %s additional damage!%s\n", GUI.ANSI_GREEN, valueOf(this.criticalDamage), GUI.ANSI_RESET);
                 }
                 System.out.printf("> You successfully hit the %s! You dealt %s damage. The %s's HP is now %s\n", monster.getName(), valueOf(grossDmg), monster.getName(), valueOf(monster.getHP()));
             }
             else {
-                System.out.print("> The monster's defense is too high! You must reduce it\'s defense or use a spell that ignores the monster's defense.\n");
+                System.out.printf("> %sThe monster's defense is too high! You must reduce it\'s defense or use a spell that ignores the monster's defense.%s\n", GUI.ANSI_PURPLE, GUI.ANSI_RESET);
             }
         }
         else {
-            System.out.println("> Oh no, the monster was too swift and dodged your attack!\n");
+            System.out.printf("> %sOh no, the monster was too swift and dodged your attack!%s\n", GUI.ANSI_PURPLE, GUI.ANSI_RESET);
         }
     }
     public void useSpell(Monster monster){
@@ -108,25 +108,25 @@ public class Player implements IEntity{
         switch(choice){
             case 1:
                 this.setHP(this.getHP() + 4);
-                System.out.printf("> You heal yourself for 4 HP, your HP is now %s\n", valueOf(this.HP));
+                System.out.printf("> %sYou heal yourself for 4 HP, your HP is now %s%s\n", GUI.ANSI_GREEN, valueOf(this.HP), GUI.ANSI_RESET);
                 break;
             case 2:
                 successChance = rand.nextInt(1, 100);
                 if (successChance >= monster.getMRes()) {
                     monster.setDef(monster.getDef() - this.Atk + (this.Atk * (this.Atk / Mastery)));
-                    System.out.printf("> You cast Shield Splitter, the monster's Def has dropped to %s\n", valueOf(monster.getDef()));
+                    System.out.printf("> %sYou cast Shield Splitter, the monster's Def has dropped to %s%s\n", GUI.ANSI_GREEN, valueOf(monster.getDef()), GUI.ANSI_RESET);
                 }
                 else if (successChance <= monster.getMRes() && successChance > 5){
                     monster.setDef(monster.getDef() - this.Atk / Mastery);
-                    System.out.printf("> You cast Shield Splitter, but the partially %s resisted your spell. It's defense dropped to %s\n", monster.getName(), monster.getDef());
+                    System.out.printf("> %sYou cast Shield Splitter, but the partially %s resisted your spell. It's defense dropped to %s%s\n",GUI.ANSI_GREEN, monster.getName(), monster.getDef(), GUI.ANSI_RESET);
                 }
                 else {
-                System.out.printf("> You messed up in casting Shield Splitter, the %s has totally resisted your spell's effects!\n", monster.getName());
+                System.out.printf("> %sYou messed up in casting Shield Splitter, the %s has totally resisted your spell's effects!%s\n",GUI.ANSI_PURPLE, monster.getName(), GUI.ANSI_RESET);
                 }
                 break;
             case 3:
                 this.Speed += this.Speed * (Mastery / 100);
-                System.out.printf("> You cast Fleet Footed Spell, your speed increased to %s\n", this.Speed);
+                System.out.printf("> %sYou cast Fleet Footed Spell, your speed increased to %s%s\n", GUI.ANSI_GREEN, this.Speed, GUI.ANSI_RESET);
                 break;
             case 4:
                 successChance = rand.nextInt(1, 100);
@@ -136,7 +136,7 @@ public class Player implements IEntity{
                         monster.setHP(monster.getHP() - 2);
                         monster.setblightDamage(1);
                         monster.setblightDuration(3);
-                        System.out.printf("> You cast Fireball and successfully hit the %s. You dealt 2 damage and inflicted Fireblight. The monster's HP is now %s\n", monster.getName(), valueOf(monster.getHP()));
+                        System.out.printf("> %sYou cast Fireball and successfully hit the %s. You dealt 2 damage and inflicted Fireblight. The monster's HP is now %s%s\n", GUI.ANSI_GREEN, monster.getName(), valueOf(monster.getHP()), GUI.ANSI_RESET);
                     }
                     else {
                         monster.setHP(monster.getHP() - 2);
@@ -147,15 +147,15 @@ public class Player implements IEntity{
                     if (blightChance >= monster.getBRes()) {
                         monster.setblightDamage(1);
                         monster.setblightDuration(3);
-                        System.out.printf("> You cast Fireball and the {0} resisted the damage, but still got inflicted with Fireblight\n", monster.getName());
+                        System.out.printf("> %sYou cast Fireball and the %s resisted the damage, but still got inflicted with Fireblight%s\n", GUI.ANSI_GREEN, monster.getName(), GUI.ANSI_RESET);
                     }
                     else {
-                        System.out.printf("> You cast fireball but the {0} resisted both the damage and blight\n", monster.getName());
+                        System.out.printf("> %sYou cast fireball but the %s resisted both the damage and blight%s\n", GUI.ANSI_PURPLE, monster.getName(), GUI.ANSI_RESET);
                     }
                 }
                 else {
                     this.HP -= 1;
-                    System.out.printf("> You messed up the casting and hit yourself with the fireball, inflicting 1 damage\n");
+                    System.out.printf("> %sYou messed up the casting and hit yourself with the fireball, inflicting 1 damage%s\n", GUI.ANSI_RED, GUI.ANSI_RESET);
                 }
                 break;
         }
@@ -288,7 +288,7 @@ public class Player implements IEntity{
         this.criticalDamage = CriticalDamage;
     }
     @Override
-    public void setblightDamage(int BlightDamage) {
+    public void setblightDamage(int blightDamage) {
         this.blightDamage = blightDamage;
     }
     @Override

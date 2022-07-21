@@ -1,11 +1,10 @@
 package com.ciit.battlesimulator.monsters;
-import com.ciit.battlesimulator.Monster;
-import com.ciit.battlesimulator.Player;
-
+import com.ciit.battlesimulator.*;
 import java.util.Random;
 
 
 public class EmperorDemon extends Monster {
+    GUI gui = new GUI();
     public EmperorDemon(){
         this.setName("Emperor Demon");
         this.setHP(50);
@@ -49,7 +48,7 @@ public class EmperorDemon extends Monster {
             this.sethasDoneSpecialAttack(true);
         }
         else{
-            System.out.println("Emperor Demon's Darkness Smother Attack Failed");
+            System.out.printf("> %sEmperor Demon's Darkness Smother Attack Failed%s\n", gui.ANSI_RED, gui.ANSI_RESET);
         }
 
         this.setIsActionDone(true);

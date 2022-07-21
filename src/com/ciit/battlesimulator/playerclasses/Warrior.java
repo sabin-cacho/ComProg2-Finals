@@ -1,6 +1,8 @@
-package com.ciit.battlesimulator;
+package com.ciit.battlesimulator.playerclasses;
 
-public class Warrior extends Player{
+import com.ciit.battlesimulator.Player;
+
+public class Warrior extends Player {
     public Warrior(){
         this.setName("Warrior");
         this.setDef(this.getDef()+5);

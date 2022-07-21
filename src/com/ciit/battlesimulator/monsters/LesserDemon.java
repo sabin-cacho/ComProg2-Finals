@@ -24,8 +24,14 @@ public class LesserDemon extends Monster {
     }
 
     public void doAction(Player player){
+        Random rand = new Random();
+        int attackChance = rand.nextInt(1, 10);
+
         if (!this.getIsActionDone() && this.getHP() > this.getmaxHP() / 2) {
-            specialAttack(player);
+            if (attackChance % 2 == 0){
+                specialAttack(player);
+            }
+            else specialAttack(player, 4);
         }
         else{
             super.doAction(player);
@@ -33,9 +39,17 @@ public class LesserDemon extends Monster {
     }
 
     public void specialAttack(Player player){
+        int quickAttackDmg = 2;
+        player.setHP(player.getHP() - quickAttackDmg);
+        System.out.printf("The %s does a quick attack, it is too fast to dodge. It deals %s damage, leaving you with %s HP\n", this.getName(), quickAttackDmg, player.getHP());
+
+        this.sethasDoneSpecialAttack(true);
+        this.setIsActionDone(true);
+    }
+
+    public void specialAttack(Player player, int duration){
         Random rand = new Random();
         int successChance = rand.nextInt(1, 100);
-        int blightChance = rand.nextInt(1, 100);
 
         if (successChance >= player.getBRes()){
             player.setblightDamage(2);
@@ -46,6 +60,7 @@ public class LesserDemon extends Monster {
             System.out.printf("The %s tried to wound you, but you resisted the blight.\n", this.getName());
         }
 
+        this.sethasDoneSpecialAttack(true);
         this.setIsActionDone(true);
     }
 }

@@ -1,10 +1,10 @@
 package com.ciit.battlesimulator.monsters;
-import com.ciit.battlesimulator.Monster;
-import com.ciit.battlesimulator.Player;
+import com.ciit.battlesimulator.*;
 
 import java.util.Random;
 
 public class HyperionDemon extends Monster {
+    GUI gui = new GUI();
     public HyperionDemon(){
         this.setName("Hyperion Demon");
         this.setHP(100);
@@ -23,7 +23,7 @@ public class HyperionDemon extends Monster {
     }
 
     public void doAction(Player player){
-        if (!this.getIsActionDone() && this.getHP() > this.getmaxHP() / 2) {
+        if (!this.getIsActionDone() && this.getHP() < this.getmaxHP() / 4) {
             specialAttack(player);
         }
         else{
@@ -74,7 +74,7 @@ public class HyperionDemon extends Monster {
             this.sethasDoneSpecialAttack(true);
         }
         else {
-            System.out.println("> Hyperion Demon's The Might From The Gods Attack Failed");
+            System.out.printf("> %sHyperion Demon's The Might From The Gods Attack Failed%s\n", gui.ANSI_RED, gui.ANSI_RESET);
         }
         this.setIsActionDone(true);
     }

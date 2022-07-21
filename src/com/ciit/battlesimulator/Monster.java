@@ -61,7 +61,7 @@ public class Monster implements IEntity {
 
         if (rand.nextInt(1, 101) > dodgeChance) {
             if (totalDmg > player.getDef()) {
-                player.setHP(totalDmg - player.getDef());
+                player.setHP(player.getHP() - (totalDmg - player.getDef()));
                 System.out.printf("> The %s attacked you, dealing %s damage. Your HP is now %s\n", this.getName(), totalDmg - player.getDef(), player.getHP());
             }
             else {
@@ -113,7 +113,7 @@ public class Monster implements IEntity {
             case 1:
                 int defShred = this.Mastery / player.getDef();
                 player.setDef(defShred);
-                System.out.printf("> The {0} attacked your armor, reducing your DEF by {1}. Your DEF is now {2}\n", this.name, valueOf(defShred), player.getDef());
+                System.out.printf("> The %s attacked your armor, reducing your DEF by %s. Your DEF is now %s\n", this.name, valueOf(defShred), player.getDef());
                 break;
         }
     }

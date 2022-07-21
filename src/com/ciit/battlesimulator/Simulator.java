@@ -3,6 +3,10 @@ import com.ciit.battlesimulator.monsters.EmperorDemon;
 import com.ciit.battlesimulator.monsters.HyperionDemon;
 import com.ciit.battlesimulator.monsters.LesserDemon;
 import com.ciit.battlesimulator.monsters.SuccubusDemon;
+import com.ciit.battlesimulator.playerclasses.Assassin;
+import com.ciit.battlesimulator.playerclasses.Druid;
+import com.ciit.battlesimulator.playerclasses.Mage;
+import com.ciit.battlesimulator.playerclasses.Warrior;
 
 import java.util.Random;
 
@@ -25,6 +29,7 @@ public class Simulator {
             if (monster.getHP() <= 0) break;
             if (player.getIsActionDone()) monster.doAction(player);
             applyBlightDamage(player, monster);
+            monster.setIsActionDone(false);
 
             System.out.println("Press Enter key to continue...");
             try { System.in.read();
@@ -33,11 +38,11 @@ public class Simulator {
         while(monster.getHP() > 0 && player.getHP() > 0);
 
         if (monster.getHP() <= 0) {
-            System.out.println("Congratulations");
-            System.out.println("You beat the monster.");
+            System.out.printf("%s%sCongratulations%s\n", GUI.ANSI_GREEN_BG, GUI.ANSI_WHITE, GUI.ANSI_RESET);
+            System.out.printf("%s%sYou beat the monster.%s\n", GUI.ANSI_GREEN_BG, GUI.ANSI_WHITE, GUI.ANSI_RESET);
         } else {
-            System.out.println("You died.");
-            System.out.println("Try again!");
+            System.out.printf("%s%sYou died.%s\n", GUI.ANSI_RED_BG, GUI.ANSI_BLACK, GUI.ANSI_RESET);
+            System.out.printf("%s%sTry again!%s\n", GUI.ANSI_RED_BG, GUI.ANSI_BLACK, GUI.ANSI_RESET);
         }
     }
 
@@ -45,17 +50,13 @@ public class Simulator {
         int option = gui.spawnMonster();
         switch(option) {
             case 1:
-                LesserDemon lesserDemon = new LesserDemon();
-                return lesserDemon;
+                return new LesserDemon();
             case 2:
-                SuccubusDemon succubusDemon = new SuccubusDemon();
-                return succubusDemon;
+                return new SuccubusDemon();
             case 3:
-                EmperorDemon emperorDemon = new EmperorDemon();
-                return emperorDemon;
+                return new EmperorDemon();
             case 4:
-                HyperionDemon hyperionDemon = new HyperionDemon();
-                return hyperionDemon;
+                return new HyperionDemon();
             default:
                 System.out.println("Please enter a valid option.");
                 spawnMonster();
@@ -68,7 +69,7 @@ public class Simulator {
             if (monster.getblightDuration() > 0) {
                 monster.setHP(monster.getHP() - monster.getblightDamage());
                 monster.setblightDuration(monster.getblightDuration() - 1);
-                System.out.printf("> The %s took %s Blight Damage\n", monster.getName(), monster.getblightDamage());
+                System.out.printf("> %sThe %s took %s Blight Damage%s\n", GUI.ANSI_GREEN, monster.getName(), monster.getblightDamage(), GUI.ANSI_RESET);
             }
             if (player.getblightDuration() > 0) {
                 player.setHP(player.getHP() - player.getblightDamage());
