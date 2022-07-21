@@ -46,17 +46,35 @@ public class HyperionDemon extends Monster {
             int amount = player.getHP();
             player.setHP(amount - this.getAtk());
 
-            this.setAtk(17);
-            this.setcriticalDamage(20);
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e){}
+            System.out.printf("> Hyperion Demon is Attacking %s With %s Attack and %s Crit Damage\n",player.getName(), this.getAtk(), this.getcriticalDamage());
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e){}
+            System.out.printf("Player Health:%s HP\n",player.getHP());
+            System.out.printf("Player ATK:%s ATK\n",player.getAtk());
+            System.out.printf("Player DEF:%s DEF\n",player.getDef());
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e){}
+            if (player.getHP() <= 0){
+                System.out.println("YOU DIED:");
+                System.out.println("Damage Inflicted: ");
+
+                var dmg = player.getHP() - this.getAtk();
+                System.out.printf("%s Attacked %s With %s ATK dealing %s Damage.\n",this.getName(), player.getName(),this.getAtk(),dmg);
+            }
+            else{
+                System.out.println("You Survived.");
+                System.out.printf("You Have %s HP Left\n", player.getHP());
+            }
 
             this.sethasDoneSpecialAttack(true);
         }
         else {
             System.out.println("> Hyperion Demon's The Might From The Gods Attack Failed");
-            try{
-                Thread.sleep(1000);
-            } catch (InterruptedException e){}
-            System.out.printf("> Hyperion Demon is Attacking %s With %s Attack and %s Crit Damage\n",player.getName(), this.getAtk(), this.getcriticalDamage());
         }
         this.setIsActionDone(true);
     }

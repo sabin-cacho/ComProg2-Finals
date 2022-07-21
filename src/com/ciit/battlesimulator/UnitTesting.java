@@ -17,7 +17,7 @@ public class UnitTesting extends HyperionDemon{
                 System.out.printf("Attack:%s ATK\n", HyperionDemon.getAtk());
                 System.out.printf("Defense:%s DEF:\n", HyperionDemon.getDef());
                 System.out.println("This is the Player Stats:");
-                player.setHP(100);
+                player.setHP(50);
                 System.out.printf("Player Health:%s HP\n",player.getHP());
                 System.out.printf("Player ATK:%s ATK\n",player.getAtk());
                 System.out.printf("Player DEF:%s DEF\n",player.getDef());
@@ -58,3 +58,4 @@ public class UnitTesting extends HyperionDemon{
         }
 
 }
+//FUCK YEAH!
