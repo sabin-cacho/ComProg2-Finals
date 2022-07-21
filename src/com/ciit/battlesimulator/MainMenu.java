@@ -1,5 +1,8 @@
 package com.ciit.battlesimulator;
 
+import com.ciit.battlesimulator.monsters.HyperionDemon;
+import com.ciit.battlesimulator.UnitTesting;
+
 import java.util.Scanner;
 
 import static java.lang.String.valueOf;
@@ -27,6 +30,10 @@ public class MainMenu {
                 break;
             case 3:
                 exit();
+                break;
+            case 4:
+                UnitTesting.UnitTest(hyperion);
+
                 break;
             default:
                 System.out.println("Please enter a valid option.");
@@ -56,3 +63,4 @@ public class MainMenu {
         System.exit(0);
     }
 }
+//[MATIAS] logs adding temporary test case in switch statement (will delete later)[].

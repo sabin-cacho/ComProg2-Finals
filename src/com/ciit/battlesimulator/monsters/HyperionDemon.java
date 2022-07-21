@@ -52,9 +52,12 @@ public class HyperionDemon extends Monster {
             this.sethasDoneSpecialAttack(true);
         }
         else {
-            System.out.println("Hyperion Demon's The Might From The Gods Attack Failed");
+            System.out.println("> Hyperion Demon's The Might From The Gods Attack Failed");
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e){}
+            System.out.printf("> Hyperion Demon is Attacking %s With %s Attack and %s Crit Damage\n",player.getName(), this.getAtk(), this.getcriticalDamage());
         }
-        this.sethasDoneSpecialAttack(true);
         this.setIsActionDone(true);
     }
 }
