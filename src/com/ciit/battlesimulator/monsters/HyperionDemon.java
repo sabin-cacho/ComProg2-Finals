@@ -81,3 +81,4 @@ public class HyperionDemon extends Monster {
 }
 //[MATIAS] Logs Created the Hyperion Demon.
 //[MATIAS] Logs Hyperion Demon Concept Finished.
+//[MATIAS] Logs Updated Hyperion Demon FINISHED.
