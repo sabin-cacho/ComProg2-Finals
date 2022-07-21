@@ -4,6 +4,7 @@ import static java.lang.String.*;
 import java.lang.Math;
 
 public class Monster implements IEntity {
+    private Random rand = new Random();
     private String name;
     private int HP;
     private int maxHP;
@@ -17,16 +18,14 @@ public class Monster implements IEntity {
     private int blightDuration;
     private int Mastery;
     private boolean isActionDone;
-    private Random rand = new Random();
     private boolean hasDoneSpecialAttack;
 
 
 
     public void doAction(Player player){
-        boolean isActionDone = false;
         boolean isBracing = false;
 
-        boolean isLowHP = this.HP > this.maxHP / 2 ? false : true;
+        boolean isLowHP = this.HP > this.maxHP / 4 ? false : true;
         int defBuff = 0;
 
         if (player.getDef() >= this.Atk && !isLowHP) {
@@ -39,16 +38,16 @@ public class Monster implements IEntity {
         }
         else {
             if (!isBracing) {
-                defBuff = this.Def * (this.Mastery / 100);
+                defBuff = this.Def * (this.Mastery / 10);
                 this.Def += defBuff;
 
-                System.out.printf("The %s is bracing for your next attack! It's DEF has increased by %s", this.name, valueOf(defBuff));
+                System.out.printf("> The %s is bracing for your next attack! It's DEF has increased by %s\n", this.name, valueOf(defBuff));
                 isBracing = true;
             }
             else {
                 this.Def -= defBuff;
 
-                System.out.printf("The %s is no longer bracing. It's DEF is back to %s.", this.name, valueOf(defBuff));
+                System.out.printf("> The %s is no longer bracing. It's DEF is back to %s.\n", this.name, valueOf(defBuff));
             }
         }
     }
@@ -61,17 +60,13 @@ public class Monster implements IEntity {
         if (rand.nextInt(1, 101) > dodgeChance) {
             if (totalDmg > player.getDef()) {
                 player.setHP(totalDmg - player.getDef());
-                System.out.printf("> The {0} attacked you, dealing {1} damage. Your HP is now {2}\n", this.getName(), totalDmg - player.getDef(), player.getHP());
+                System.out.printf("> The %s attacked you, dealing %s damage. Your HP is now %s\n", this.getName(), totalDmg - player.getDef(), player.getHP());
             }
             else {
-                System.out.printf("> The {0} tried to attack you!\n", this.getName());
+                System.out.printf("> The %s tried to attack you!\n", this.getName());
                 System.out.println("> Your defense was high enough to block the monster's attack!\n");
             }
         }
-    }
-
-    public void specialAttack(Player player, int omegalul){
-        //heavy attack, deals additional damage that scales to the monster's current HP and Mastery
     }
 
     private int calculateDodgeChance(Player player){
@@ -116,7 +111,7 @@ public class Monster implements IEntity {
             case 1:
                 int defShred = this.Mastery / player.getDef();
                 player.setDef(defShred);
-                System.out.printf("> The {0} attacked your armor, reducing your DEF by {1}. Your DEF is now {2}", this.name, valueOf(defShred), player.getDef());
+                System.out.printf("> The {0} attacked your armor, reducing your DEF by {1}. Your DEF is now {2}\n", this.name, valueOf(defShred), player.getDef());
                 break;
         }
     }
@@ -223,7 +218,7 @@ public class Monster implements IEntity {
     }
     @Override
     public void setblightDamage(int BlightDamage) {
-        this.blightDamage = blightDamage;
+        this.blightDamage = BlightDamage;
     }
     @Override
     public void setblightDuration(int BlightDuration) {

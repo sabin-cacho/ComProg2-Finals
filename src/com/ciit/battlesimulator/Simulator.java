@@ -1,4 +1,9 @@
 package com.ciit.battlesimulator;
+import com.ciit.battlesimulator.monsters.EmperorDemon;
+import com.ciit.battlesimulator.monsters.HyperionDemon;
+import com.ciit.battlesimulator.monsters.LesserDemon;
+import com.ciit.battlesimulator.monsters.SuccubusDemon;
+
 import java.util.Random;
 
 public class Simulator {
@@ -53,3 +58,12 @@ public class Simulator {
         return null;
     }
 }
+
+//ayon ok na, pero pag sa ibang class okay naman, try mo nalang gawa ng isang useless na class tas don yun titehahahahhah
+//gawa ka tite class
+// HAHAHHAHA
+//g gago
+//fuck PE
+//tite
+//POTAENA, Ayoko na sa PE
+//PUTA Siya

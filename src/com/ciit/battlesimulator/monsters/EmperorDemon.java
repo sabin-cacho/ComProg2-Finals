@@ -1,4 +1,7 @@
-package com.ciit.battlesimulator;
+package com.ciit.battlesimulator.monsters;
+import com.ciit.battlesimulator.Monster;
+import com.ciit.battlesimulator.Player;
+
 import java.util.Random;
 
 
@@ -14,12 +17,12 @@ public class EmperorDemon extends Monster {
         this.setcriticalDamage(12);
         this.setblightDamage(0);// Always starts off at 0.
         this.setblightDuration(0);// Always starts off at 0.
-        this.setMastery(3);
+        this.setMastery(30);
         this.setIsActionDone(false);
     }
 
     public void doAction(Player player){
-        if (!this.getIsActionDone() && this.getHP() > this.getmaxHP() / 2) {
+        if (!this.getIsActionDone() && this.getHP() < this.getmaxHP() / 2) {
             specialAttack(player);
         }
         else{

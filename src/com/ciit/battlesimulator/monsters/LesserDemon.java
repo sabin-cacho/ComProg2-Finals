@@ -1,6 +1,8 @@
-package com.ciit.battlesimulator;
+package com.ciit.battlesimulator.monsters;
 
-public class LesserDemon extends Monster{
+import com.ciit.battlesimulator.Monster;
+
+public class LesserDemon extends Monster {
     public LesserDemon() {
         this.setName("Lesser Demon");
         this.setHP(10);
@@ -13,7 +15,7 @@ public class LesserDemon extends Monster{
         this.setcriticalDamage(2);
         this.setblightDamage(0); //always starts off as 0, gets changed by a method
         this.setblightDuration(0); //same here
-        this.setMastery(3);
+        this.setMastery(30);
         this.setIsActionDone(false); //always starts off as false
     }
 }

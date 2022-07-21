@@ -1,4 +1,7 @@
-package com.ciit.battlesimulator;
+package com.ciit.battlesimulator.monsters;
+import com.ciit.battlesimulator.Monster;
+import com.ciit.battlesimulator.Player;
+
 import java.util.Random;
 
 
@@ -15,7 +18,7 @@ public class SuccubusDemon extends Monster {
         this.setcriticalDamage(10);
         this.setblightDamage(0);// Always starts off from 0.
         this.setblightDuration(0);// Always starts off from 0.
-        this.setMastery(3);
+        this.setMastery(30);
         this.setIsActionDone(false);
     }
 

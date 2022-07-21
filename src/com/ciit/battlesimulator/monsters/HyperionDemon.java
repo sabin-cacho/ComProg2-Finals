@@ -1,7 +1,10 @@
-package com.ciit.battlesimulator;
+package com.ciit.battlesimulator.monsters;
+import com.ciit.battlesimulator.Monster;
+import com.ciit.battlesimulator.Player;
+
 import java.util.Random;
 
-public class HyperionDemon extends Monster{
+public class HyperionDemon extends Monster {
     public HyperionDemon(){
         this.setName("Hyperion Demon");
         this.setHP(100);
@@ -13,7 +16,7 @@ public class HyperionDemon extends Monster{
         this.setcriticalDamage(20);
         this.setblightDamage(0);// Always starting at zero.
         this.setblightDuration(0);// Always starts at 0
-        this.setMastery(3);
+        this.setMastery(30);
         this.setIsActionDone(false);
         this.sethasDoneSpecialAttack(false);
     }
@@ -54,3 +57,4 @@ public class HyperionDemon extends Monster{
     }
 }
 //[MATIAS] Logs Created the Hyperion Demon.
+//[MATIAS] Logs Hyperion Demon Concept Finished.
