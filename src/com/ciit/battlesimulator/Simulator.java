@@ -39,8 +39,8 @@ public class Simulator {
         while(monster.getHP() > 0 && player.getHP() > 0);
 
         if (monster.getHP() <= 0) {
-            System.out.printf("%s%sCongratulations%s\n", GUI.ANSI_GREEN_BG, GUI.ANSI_WHITE, GUI.ANSI_RESET);
-            System.out.printf("%s%sYou beat the monster.%s\n", GUI.ANSI_GREEN_BG, GUI.ANSI_WHITE, GUI.ANSI_RESET);
+            System.out.printf("%s%sCongratulations%s\n", GUI.ANSI_GREEN_BG, GUI.ANSI_BLACK, GUI.ANSI_RESET);
+            System.out.printf("%s%sYou beat the monster.%s\n", GUI.ANSI_GREEN_BG, GUI.ANSI_BLACK, GUI.ANSI_RESET);
         } else {
             System.out.printf("%s%sYou died.%s\n", GUI.ANSI_RED_BG, GUI.ANSI_BLACK, GUI.ANSI_RESET);
             System.out.printf("%s%sTry again!%s\n", GUI.ANSI_RED_BG, GUI.ANSI_BLACK, GUI.ANSI_RESET);
