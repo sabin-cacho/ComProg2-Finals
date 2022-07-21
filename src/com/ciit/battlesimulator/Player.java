@@ -20,10 +20,64 @@ public class Player implements IEntity{
     private int Mastery;
     private boolean isActionDone;
 
+    public Player() {
+        this.setName("Player 1");
+        this.setHP(20);
+        this.setMaxHP(20);
+        this.setAtk(5);
+        this.setMRes(10);
+        this.setBRes(10);
+        this.setSpeed(12);
+        this.setcriticalDamage(0);
+        this.setblightDamage(0);
+        this.setblightDuration(0);
+        this.setMastery(69);//nice
+        this.setIsActionDone(false);
+    }
+
     public void doAction(Monster monster, Random rand, int action){
         switch(action){
-            case 1: attackMonster(monster);
-            break;
+            case 1:
+                this.attackMonster(monster);
+                inflictBlightDamage(monster, rand);
+                this.isActionDone = true;
+                break;
+            case 2:
+                this.useSpell(monster);
+                inflictBlightDamage(monster,rand);
+                this.isActionDone = true;
+                break;
+            case 3:
+                System.out.println("-------------");
+                System.out.println("Name: " + monster.getName());
+                System.out.println("HP: " + monster.getHP());
+                System.out.println("Def: " + monster.getDef());
+                System.out.println("Atk: " + monster.getAtk());
+                System.out.println("Magic Resistance: " + monster.getMRes());
+                System.out.println("Blight Resistance:" + monster.getBRes());
+                System.out.println("Speed: " + monster.getSpeed());
+                System.out.println("Spell Mastery: " + monster.getMastery());
+                System.out.println("-------------");
+                this.isActionDone = false;
+                break;
+            case 4:
+                System.out.println("-------------");
+                System.out.println("Name: " + this.getName());
+                System.out.println("HP: " + this.getHP());
+                System.out.println("Def: " + this.getDef());
+                System.out.println("Atk: " + this.getAtk());
+                System.out.println("Magic Resistance: " + this.getMRes());
+                System.out.println("Blight Resistance:" + this.getBRes());
+                System.out.println("Speed: " + this.getSpeed());
+                System.out.println("Spell Mastery: " + this.getMastery());
+                System.out.println("-------------");
+                this.isActionDone = false;
+                break;
+            default:
+                System.out.println("Please enter a valid action.");
+                this.doAction(monster, rand, gui.playerAction());
+                this.isActionDone = false;
+
         }
     }
 
