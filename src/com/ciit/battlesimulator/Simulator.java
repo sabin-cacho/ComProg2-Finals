@@ -17,7 +17,9 @@ public class Simulator {
 
     public void battleLoop(Monster monster, Player player){
         do {
-            System.out.println("Battle Phase: ");
+            System.out.println("\nBattle Phase: ");
+            System.out.printf("Player  HP: %s  Def: %s ", player.getHP(), player.getDef());
+            System.out.printf("\nMonster HP: %s  Def: %s \n", monster.getHP(), monster.getDef());
             player.doAction(monster, rand, gui.playerAction());
             if (player.getIsActionDone()) monster.doAction(player);
             System.out.println("Press Enter key to continue...");
