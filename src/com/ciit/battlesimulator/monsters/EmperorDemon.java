@@ -12,8 +12,8 @@ public class EmperorDemon extends Monster {
         this.setDef(30);
         this.setmaxDef(30);
         this.setAtk(8);
-        this.setMRes(5);
-        this.setBRes(8);
+        this.setMRes(40);
+        this.setBRes(80);
         this.setSpeed(15);
         this.setcriticalDamage(12);
         this.setblightDamage(0);// Always starts off at 0.

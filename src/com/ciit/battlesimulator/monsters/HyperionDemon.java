@@ -11,8 +11,8 @@ public class HyperionDemon extends Monster {
         this.setDef(50);
         this.setmaxDef(50);
         this.setAtk(17);
-        this.setMRes(10);
-        this.setBRes(10);
+        this.setMRes(50);
+        this.setBRes(50);
         this.setSpeed(20);
         this.setcriticalDamage(20);
         this.setblightDamage(0);// Always starting at zero.

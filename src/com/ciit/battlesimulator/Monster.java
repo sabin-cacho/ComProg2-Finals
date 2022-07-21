@@ -118,21 +118,14 @@ public class Monster implements IEntity {
         }
     }
 
-    public void inflictBlightDamage(Player player){
-        // checks if theres a blight currently inflicted on the player, and inflicts additional damage if there is
-        if (player.getblightDuration() > 0) {
-            player.setHP(player.getHP() - player.getblightDamage());
-            player.setblightDuration(player.getblightDuration() - 1);
-        }
-    }
-
     @Override
     public String getName() {
         return name;
     }
     @Override
     public int getHP() {
-        return HP;
+        if (HP < 0) return 0;
+        else return HP;
     }
     @Override
     public int getmaxHP() {

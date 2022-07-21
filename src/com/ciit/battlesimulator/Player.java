@@ -39,12 +39,10 @@ public class Player implements IEntity{
         switch(action){
             case 1:
                 this.attackMonster(monster);
-                inflictBlightDamage(monster, rand);
                 this.isActionDone = true;
                 break;
             case 2:
                 this.useSpell(monster);
-                inflictBlightDamage(monster,rand);
                 this.isActionDone = true;
                 break;
             case 3:
@@ -161,14 +159,6 @@ public class Player implements IEntity{
                 break;
         }
     }
-    public void inflictBlightDamage(Monster monster, Random rand){
-        // checks if theres a blight currently inflicted on the monster, and inflicts additional damage if there is
-        if (monster.getblightDuration() > 0) {
-            monster.setHP(monster.getHP() - monster.getblightDamage());
-            monster.setblightDuration(monster.getblightDuration() - 1);
-            System.out.printf("> The %s took %s Blight Damage\n", monster.getName(), monster.getblightDamage());
-        }
-    }
 
     private int calculateDodgeChance(Monster monster){
         int speedDifference = monster.getSpeed() - this.Speed;
@@ -213,7 +203,8 @@ public class Player implements IEntity{
     }
     @Override
     public int getHP() {
-        return HP;
+        if (HP < 0) return 0;
+        else return HP;
     }
     @Override
     public int getmaxHP() {

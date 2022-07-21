@@ -13,8 +13,8 @@ public class SuccubusDemon extends Monster {
         this.setDef(15);
         this.setmaxDef(15);
         this.setAtk(7);
-        this.setMRes(3);
-        this.setBRes(5);
+        this.setMRes(30);
+        this.setBRes(40);
         this.setSpeed(12);
         this.setcriticalDamage(10);
         this.setblightDamage(0);// Always starts off from 0.
