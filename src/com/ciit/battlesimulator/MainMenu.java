@@ -14,6 +14,8 @@ public class MainMenu {
             System.out.printf("%s - %s\n", valueOf(i+1), options[i]);
         }
         System.out.print("Enter your choice here: ");
+        HyperionDemon hyperion = new HyperionDemon();
+
         int option = menuChoice.nextInt();
         switch(option) {
             case 1:

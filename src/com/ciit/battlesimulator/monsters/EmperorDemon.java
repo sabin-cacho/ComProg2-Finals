@@ -10,6 +10,7 @@ public class EmperorDemon extends Monster {
         this.setName("Emperor Demon");
         this.setHP(50);
         this.setDef(30);
+        this.setmaxDef(30);
         this.setAtk(8);
         this.setMRes(5);
         this.setBRes(8);
@@ -45,12 +46,12 @@ public class EmperorDemon extends Monster {
             this.setAtk(8);
             this.setcriticalDamage(12);
 
+            this.sethasDoneSpecialAttack(true);
         }
         else{
             System.out.println("Emperor Demon's Darkness Smother Attack Failed");
         }
 
-        this.sethasDoneSpecialAttack(true);
         this.setIsActionDone(true);
     }
 }

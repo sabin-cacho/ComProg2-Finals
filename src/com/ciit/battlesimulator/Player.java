@@ -136,7 +136,6 @@ public class Player implements IEntity{
                     if (blightChance >= monster.getBRes()) {
                         monster.setHP(monster.getHP() - 2);
                         monster.setblightDamage(1);
-                        System.out.println("test " + monster.getblightDamage());
                         monster.setblightDuration(3);
                         System.out.printf("> You cast Fireball and successfully hit the %s. You dealt 2 damage and inflicted Fireblight. The monster's HP is now %s\n", monster.getName(), valueOf(monster.getHP()));
                     }
@@ -165,7 +164,7 @@ public class Player implements IEntity{
     public void inflictBlightDamage(Monster monster, Random rand){
         // checks if theres a blight currently inflicted on the monster, and inflicts additional damage if there is
         if (monster.getblightDuration() > 0) {
-            monster.setHP(monster.getblightDamage());
+            monster.setHP(monster.getHP() - monster.getblightDamage());
             monster.setblightDuration(monster.getblightDuration() - 1);
             System.out.printf("> The %s took %s Blight Damage\n", monster.getName(), monster.getblightDamage());
         }

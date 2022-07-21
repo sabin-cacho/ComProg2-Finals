@@ -9,6 +9,7 @@ public class Monster implements IEntity {
     private int HP;
     private int maxHP;
     private int Def;
+    private int maxDef;
     private int Atk;
     private int MRes;
     private int BRes;
@@ -38,6 +39,7 @@ public class Monster implements IEntity {
         }
         else {
             if (!isBracing) {
+                setDef(getmaxDef());
                 defBuff = this.Def * (this.Mastery / 10);
                 this.Def += defBuff;
 
@@ -140,6 +142,7 @@ public class Monster implements IEntity {
     public int getDef() {
         return Def;
     }
+    public int getmaxDef() { return maxDef; }
     @Override
     public int getAtk() {
         return Atk;
@@ -196,6 +199,7 @@ public class Monster implements IEntity {
     public void setDef(int Def) {
         this.Def = Def;
     }
+    public void setmaxDef(int maxDef) { this.maxDef = maxDef; }
     @Override
     public void setAtk(int Atk) {
         this.Atk = Atk;

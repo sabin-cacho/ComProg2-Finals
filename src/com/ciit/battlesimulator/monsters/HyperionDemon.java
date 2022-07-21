@@ -9,6 +9,7 @@ public class HyperionDemon extends Monster {
         this.setName("Hyperion Demon");
         this.setHP(100);
         this.setDef(50);
+        this.setmaxDef(50);
         this.setAtk(17);
         this.setMRes(10);
         this.setBRes(10);
@@ -35,7 +36,7 @@ public class HyperionDemon extends Monster {
         int chance = rand.nextInt(10);
 
         if (chance % 2 == 0){
-            System.out.println("Hyperion Demon Has Possessed The Might From The Gods");
+            System.out.println("> Hyperion Demon Has Possessed The Might From The Gods");
             int hpAmount = player.getHP();
             player.setHP(hpAmount / 2);
 
@@ -48,6 +49,7 @@ public class HyperionDemon extends Monster {
             this.setAtk(17);
             this.setcriticalDamage(20);
 
+            this.sethasDoneSpecialAttack(true);
         }
         else {
             System.out.println("Hyperion Demon's The Might From The Gods Attack Failed");

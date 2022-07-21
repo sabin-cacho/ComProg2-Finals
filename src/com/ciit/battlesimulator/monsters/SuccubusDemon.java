@@ -11,6 +11,7 @@ public class SuccubusDemon extends Monster {
         this.setHP(15);
         this.setMaxHP(25);
         this.setDef(15);
+        this.setmaxDef(15);
         this.setAtk(7);
         this.setMRes(3);
         this.setBRes(5);
@@ -40,12 +41,11 @@ public class SuccubusDemon extends Monster {
             int amount = player.getHP();
             player.setHP(amount / 2);
 
+            this.sethasDoneSpecialAttack(true);
         }
         else{
             System.out.println("Akira Demon's Hyper Attack Failed");
         }
-
-        this.sethasDoneSpecialAttack(true);
         this.setIsActionDone(true);
     }
 }
