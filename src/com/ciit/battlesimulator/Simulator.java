@@ -14,19 +14,46 @@ public class Simulator {
     GUI gui = new GUI();
     Player player = new Player();
     Random rand = new Random();
+    boolean error = false;
 
     public Simulator(){
-        player = selectClass();
-        battleLoop(spawnMonster(), player);
+        do{
+            try {
+                player = selectClass();
+                error = false;
+            } catch (Exception e){
+                System.out.println("\nInvalid input. Try Again.");
+                error = true;
+            }
+        }  while (error);
+
+        do{
+            try{
+                battleLoop(spawnMonster(), player);
+                error = false;
+            }catch (Exception e){
+                System.out.println("\nInvalid input. Try Again.");
+                error = true;
+            };
+        } while (error);
     }
 
     private void battleLoop(Monster monster, Player player){
         do {
             System.out.println("\nBattle Phase: ");
-            System.out.printf("Player  HP: %s  Def: %s ", player.getHP(), player.getDef());
-            System.out.printf("\nMonster HP: %s  Def: %s \n", monster.getHP(), monster.getDef());
+            System.out.printf("Player  HP: %s \t Def: %s ", player.getHP(), player.getDef());
+            System.out.printf("\nMonster HP: %s \t Def: %s \n", monster.getHP(), monster.getDef());
 
-            player.doAction(monster, rand, gui.playerAction());
+            do{
+                try{
+                    player.doAction(monster, rand, gui.playerAction());
+                    error = false;
+                }catch (Exception e){
+                    System.out.println("\nInvalid input. Try Again.");
+                    error = true;
+                };
+            } while (error);
+
             if (monster.getHP() <= 0) break;
             if (player.getIsActionDone()) monster.doAction(player);
             applyBlightDamage(player, monster);
