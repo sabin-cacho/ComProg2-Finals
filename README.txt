@@ -37,3 +37,8 @@ NARRATIVE:
                 - Simulator
 
     (The Unit Testing class was used for Debug purposes.)
+
+        The program was initially made using C#, and our team translated the program into Java. Initially we thought that translating the whole program was the
+    hardest part, but we encountered several problems and bugs while making the program. Some codes don't have literal translation into one another, some codes
+    just works differently in other language and some just don't exist in other language. In the end, we manage to recreate a fully working program and managed
+    to solve every bug/problem we encountered.
