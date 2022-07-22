@@ -1,6 +1,6 @@
 Narrative:
     Kyle, Nate, and I are part of a large Game Dev't company, where our team and many other teams were tasked with designing a combat engine.
-    Each team was also tasked with pitching the design to the Seniors in the team, and the design they find works the best will be implemented into the final game.
+    Each team was also tasked with pitching the design to the Seniors in the company, and the design they find works the best will be implemented into the final game.
 
 Components:
     There are 3 main types of components in our projects: the UI components, the Entity components, and the Game Loop components
