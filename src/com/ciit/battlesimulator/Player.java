@@ -19,7 +19,18 @@ public class Player implements IEntity{
     private int blightDuration;
     private int Mastery;
     private boolean isActionDone;
-
+    /* HP - Health Points, reduce this number to 0 to win the battle
+     * Def - Reduces the damage from an attack by this number
+     * Atk - Raw damage the player is able to inflict
+     * MRes - Magic Resistance, a number out of 100 which denotes the possibility for a magic attack to deal reduced damage or reduced effect(s)
+     * BRes - Blight Resistance, a number out of 100 which denotes the possibility to prevent a blight from getting applied
+     * Speed - Denotes the capability of the player to dodge an attack, this number is compared to the speed of the attacker to figure out the likelihood of a dodge
+     *  the faster party also has a chance to deal extra damage
+     * Mastery - A percentage denoting how well the player has mastered the ability to cast spells, a higher mastery increases the chance for a greater effect
+     * Critical Damage - Additional damage when the this is faster than the monster
+     * Blight Damage - The amount of damage inflicted to you by a blight each turn
+     * Blight Duration - How many turns the inflicted blight will last
+     */
     public Player() {
         this.setName("Player 1");
         this.setHP(20);

@@ -1,11 +1,13 @@
 package com.ciit.battlesimulator.monsters;
 
+import com.ciit.battlesimulator.GUI;
 import com.ciit.battlesimulator.Monster;
 import com.ciit.battlesimulator.Player;
 
 import java.util.Random;
 
 public class LesserDemon extends Monster {
+    GUI gui = new GUI();
     public LesserDemon() {
         this.setName("Lesser Demon");
         this.setHP(10);
@@ -41,7 +43,7 @@ public class LesserDemon extends Monster {
     public void specialAttack(Player player){
         int quickAttackDmg = 2;
         player.setHP(player.getHP() - quickAttackDmg);
-        System.out.printf("The %s does a quick attack, it is too fast to dodge. It deals %s damage, leaving you with %s HP\n", this.getName(), quickAttackDmg, player.getHP());
+        System.out.printf("> %sThe %s does a quick attack, it is too fast to dodge. It deals %s damage, leaving you with %s HP%s\n", GUI.ANSI_RED, this.getName(), quickAttackDmg, player.getHP(), GUI.ANSI_RESET);
 
         this.sethasDoneSpecialAttack(true);
         this.setIsActionDone(true);
@@ -54,10 +56,10 @@ public class LesserDemon extends Monster {
         if (successChance >= player.getBRes()){
             player.setblightDamage(2);
             player.setblightDuration(4);
-            System.out.printf("The %s wounded you and caused Bleed, you will take %s damage for the next %s turns\n", this.getName(), player.getblightDamage(), player.getblightDuration());
+            System.out.printf("> %sThe %s wounded you and caused Bleed, you will take %s damage for the next %s turns%s\n", GUI.ANSI_RED, this.getName(), player.getblightDamage(), player.getblightDuration(), GUI.ANSI_RESET);
         }
         else {
-            System.out.printf("The %s tried to wound you, but you resisted the blight.\n", this.getName());
+            System.out.printf("> %sThe %s tried to wound you, but you resisted the blight.%s\n", GUI.ANSI_PURPLE, this.getName(), GUI.ANSI_RESET);
         }
 
         this.sethasDoneSpecialAttack(true);

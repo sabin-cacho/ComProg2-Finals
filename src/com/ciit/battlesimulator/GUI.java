@@ -33,7 +33,7 @@ public class GUI {
         for (int i = 0; i < monsters.length; i++){
             System.out.printf("%s - %s\n", valueOf(i+1), monsters[i]);
         }
-        System.out.printf("%s%sEnter your choice here: %s", ANSI_WHITE_BG, ANSI_BLACK, ANSI_RESET);
+        System.out.printf("%s%sEnter your choice here:%s ", ANSI_WHITE_BG, ANSI_BLACK, ANSI_RESET);
         choice = in.nextInt();
         return choice;
     }
@@ -41,12 +41,12 @@ public class GUI {
     public int selectClass(){
         int choice = 0;
         Scanner in = new Scanner(System.in);
-        System.out.println("Choose a your player type:");
+        System.out.println("Choose your player type:");
         String[] monsters = {"Warrior", "Mage", "Assassin", "Druid"};
         for (int i = 0; i < monsters.length; i++){
             System.out.printf("%s - %s\n", valueOf(i+1), monsters[i]);
         }
-        System.out.printf("%s%sEnter your choice here: %s", ANSI_WHITE_BG, ANSI_BLACK, ANSI_RESET);
+        System.out.printf("%s%sEnter your choice here:%s ", ANSI_WHITE_BG, ANSI_BLACK, ANSI_RESET);
         choice = in.nextInt();
         return choice;
     }
@@ -60,7 +60,7 @@ public class GUI {
         for (int i = 0; i < options.length; i++){
             System.out.printf("%s - %s\n", valueOf(i+1), options[i]);
         }
-        System.out.printf("%s%sEnter your choice here: %s", ANSI_WHITE_BG, ANSI_BLACK, ANSI_RESET);
+        System.out.printf("%s%sEnter your choice here:%s ", ANSI_WHITE_BG, ANSI_BLACK, ANSI_RESET);
         choice = in.nextInt();
         return choice;
     }
@@ -74,7 +74,7 @@ public class GUI {
         for (int i = 0; i < spells.length; i++){
             System.out.printf("%s - %s: %s\n", valueOf(i+1), spells[i], spellDesc[i]);
         }
-        System.out.printf("%s%sEnter your choice here: %s", ANSI_WHITE_BG, ANSI_BLACK, ANSI_RESET);
+        System.out.printf("%s%sEnter your choice here:%s ", ANSI_WHITE_BG, ANSI_BLACK, ANSI_RESET);
         choice = in.nextInt();
         return choice;
     }
