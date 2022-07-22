@@ -1,9 +1,18 @@
-Narrative:
-    Kyle, Nate, and I are part of a large Game Dev't company, where our team and many other teams were tasked with designing a combat engine.
-    Each team was also tasked with pitching the design to the Seniors in the company, and the design they find works the best will be implemented into the final game.
+Submitted by:
+    Florendo, Nate Justine
+    Matias, Kyle Christiane
+    Cacho, Sabin Miguel
 
-Components:
-    There are 3 main types of components in our projects: the UI components, the Entity components, and the Game Loop components
+Submitted to:
+    Mr. Alampay, Raphael
+
+NARRATIVE:
+
+        Our team were tasked to create a program that utilizes tha basic ideas of Java object-oriented programming. Our team, consisting of
+    Kyle Matias, Nate Florendo, and Sabin Cacho decided to create a simple RPG combat text based game. We designed the program to be efficient
+    and also to meet the requirements given to us. The program is composed of multiple classes/components. There are 3 main types of components
+    in our project: the UI components, the Entity components, and the Game Loop components:
+
         UI Components:
             These are the components that relate to outputting prompts to the user through the console, this type consists of mainly:
                 - GUI (any of the classes within the package can import this class and access its methods and attributes)
